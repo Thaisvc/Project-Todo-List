@@ -17,23 +17,28 @@ selectButton.addEventListener('click', function () {//ADICIONANDO EVENTO AO BUTT
   criaLi.classList.add('list');
   //ADICIONANDO MINHA LI COMO FILHA DE OL NO MEU HTML
   selectOl.appendChild(criaLi);
-  //SE MINHA LI TIVER SIDO CRIADA
-  if (selectOl.appendChild(criaLi)) {
-    //ADICIONO NOVA CLASS
+  //SELECIONANDO MINHA PRIMEIRA CALSS LIST E ADICIONANDO A CLASS SELECTED
     document.querySelector('.list').classList.add('selected')
+    //SELECIONANDO TODAS AS CLASS LIST
     seleciona = document.getElementsByClassName('list');
+    //FUNÇAO PARA SDD E REMOVER A CLASS SELECTED E A CLASS COR
     function remove() {
+      //PERCORRENDO TODAS AS CLASS LIST
       for (let index = 0; index < seleciona.length; index += 1) {
+        //GUARDANDO A POSICAO
         let posicao = seleciona[index];
+        //ADICIONANDO UM ESCUTADOR DE EVENTO A ADA POSICAO
         posicao.addEventListener('click', function (event) {
+          //SELECIONANDO MINHA CLASS SELECTED/REMOVENDO A CLASS SELECTED E COR COSA TIVER /A CADA CLICK
           document.querySelector('.selected').classList.remove('selected', 'cor');
+          //ADICIONADO CLASS SELECTED E COR SE NAO TIVER/A CADA CLICK
           event.target.classList.add('selected', 'cor');
 
         });
       }
     }
     remove();
-  }
+  
   //LIMPANDO MEU INPUT PARA RECEBER NOVO VALOR
   selectInput.value = '';
 })
