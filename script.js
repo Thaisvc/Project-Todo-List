@@ -1,10 +1,12 @@
 /* eslint-disable */
 const selectInput = document.getElementById('texto-tarefa');
 const selectOl = document.getElementById('lista-tarefas');
+const selectli = document.getElementsByClassName('list');
 const selectButton = document.getElementById('criar-tarefa');
 const buttonLimpar = document.getElementById('apaga-tudo');
 const buttonApagaFeito = document.getElementById('remover-finalizados');
 const ClassCompleted = document.getElementsByClassName('completed')
+const ButtonSalva = document.getElementById('salvar-tarefas')
 
 
 //======================================================================================================================
@@ -85,4 +87,15 @@ buttonApagaFeito.addEventListener('click', () => {
   }
     
 });
+
+//SALVANDO 
+ButtonSalva.addEventListener('click', (event) => {
+  for (let index = 0; index < selectli.length; index+= 1) {
+    let positSalve = selectli[index];
+   localStorage.setItem( index, positSalve.innerText);
+  }
+
+     
+}
+)
 
