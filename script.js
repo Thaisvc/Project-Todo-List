@@ -11,7 +11,7 @@ const ClassCompleted = document.getElementsByClassName('completed')
 
 // adicionar tarefa a lista
 
-selectButton.addEventListener('click', function creates() {//ADICIONANDO EVENTO AO BUTTON COM UMA FUNÇAO
+selectButton.addEventListener('click', function() {//ADICIONANDO EVENTO AO BUTTON COM UMA FUNÇAO
   // PEGANDO O VALOR PASSADO PARA O INPUT
   let valorInput = selectInput.value;
   //CRIANDO MEU ELEMENTO LI FILHO DE OL
@@ -46,7 +46,7 @@ selectButton.addEventListener('click', function creates() {//ADICIONANDO EVENTO 
 
   //LIMPANDO MEU INPUT PARA RECEBER NOVO VALOR
   selectInput.value = '';
-    
+  
 })
 //======================================================================================================================
 //MARCA E DESMARCA TAREFA
