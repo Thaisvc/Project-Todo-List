@@ -27,7 +27,8 @@
         const button = document.getElementById('add-button');
         const input = document.getElementById('phrases-input');
         const list = document.getElementById('phrases-list');
-
+        //MOSTRANDO
+        
         function insertPhraseInDOM() {
             const phrasesList = JSON.parse(localStorage.getItem('phrases'));
             const listLength = phrasesList.length - 1;
@@ -36,7 +37,7 @@
             phrase.innerText = phraseText;
             list.appendChild(phrase);
         }
-
+        // ADD AO LOCAL
         function addPhraseToLocalStorage() {
             const oldList = JSON.parse(localStorage.getItem('phrases'));
             const phraseText = input.value;
