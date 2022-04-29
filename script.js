@@ -2,8 +2,8 @@
 const selectInput = document.getElementById('texto-tarefa');
 const selectOl = document.getElementById('lista-tarefas');
 const selectButton = document.getElementById('criar-tarefa');
-const selectLi = document.getElementById('lista-tarefas').children;
-/* const selectCompleted = document.getElementsByClassName('completed'); */
+const buttonLimpar = document.getElementById('apaga-tudo');
+const lis = document.getElementsByClassName('list')
 //======================================================================================================================
 
 // adicionar tarefa a lista
@@ -61,3 +61,13 @@ function tarefaConcluida() {
 });  
 } 
 tarefaConcluida()
+
+buttonLimpar.addEventListener('click', () => {
+  const list = document.getElementById('lista-tarefas');
+  //O hasChildNodes()método da Nodeinterface retorna um valor booleano indicando se o dado Nodepossui nós filhos ou não.
+  while (list.hasChildNodes()) {
+    //firstChild : retorna o primeiro nó filho. 
+    list.removeChild(list.firstChild);
+  }
+ 
+})
