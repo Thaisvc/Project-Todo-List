@@ -43,26 +43,21 @@ selectButton.addEventListener('click', function creates() {//ADICIONANDO EVENTO 
 
   //LIMPANDO MEU INPUT PARA RECEBER NOVO VALOR
   selectInput.value = '';
-  for (let index = 0; index < selectLi.length; index += 1) {// aqui eu adicionei o evento de duplo click nas li's que seriam criadas
-    selectLi[index].addEventListener("dblclick", (event) => {
-      event.target.classList.replace('list', 'completed')
-    })
     
-  
-  }
-  
 })
 //======================================================================================================================
-
-
-
-/* for (let index = 0; index < selectLi.length; index += 1) {
-  selectLi[index].addEventListener("dblclick", () => {
-    console.log(selectLi) 
-    alert('click')
-  })
-}
- */
-
-
-
+//MARCA E DESMARCA TAREFA
+function tarefaConcluida() {
+  //USANDO MEU DOCUMENT PQ PERMITE Q EU ACESSE QUALQUER PARTE DO MEU DOCUMENTO COM O EVENTO DE DUPLOCLICK
+  document.addEventListener("dblclick", (event) => {
+    //ESPECIFICANDO O Q EU QUERO SE OUVER DUPLOCLICK E MEU ELEMENTO CLICADO TIVER A CLASS COMPLETED ENTAO
+    if(event.target.classList.contains('completed')){
+      //EVENT REMOVE A CLASS SE  NO ELEMENTO CLICADO (target) TIVER E
+      event.target.classList.remove('completed');
+  }else{
+    // SE NAO TIVER EVENT NO ELEMENTO CLICADO (target) ADICIONA
+      event.target.classList.add('completed');
+  };
+});  
+} 
+tarefaConcluida()
