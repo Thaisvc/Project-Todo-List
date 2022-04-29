@@ -13,7 +13,7 @@ const ButtonSalva = document.getElementById('salvar-tarefas')
 
 // adicionar tarefa a lista
 
-selectButton.addEventListener('click', function() {//ADICIONANDO EVENTO AO BUTTON COM UMA FUNÇAO
+selectButton.addEventListener('click', function () {//ADICIONANDO EVENTO AO BUTTON COM UMA FUNÇAO
   // PEGANDO O VALOR PASSADO PARA O INPUT
   let valorInput = selectInput.value;
   //CRIANDO MEU ELEMENTO LI FILHO DE OL
@@ -48,7 +48,7 @@ selectButton.addEventListener('click', function() {//ADICIONANDO EVENTO AO BUTTO
 
   //LIMPANDO MEU INPUT PARA RECEBER NOVO VALOR
   selectInput.value = '';
-  
+
 })
 //======================================================================================================================
 //MARCA E DESMARCA TAREFA
@@ -56,15 +56,15 @@ function tarefaConcluida() {
   //USANDO MEU DOCUMENT PQ PERMITE Q EU ACESSE QUALQUER PARTE DO MEU DOCUMENTO COM O EVENTO DE DUPLOCLICK
   document.addEventListener("dblclick", (event) => {
     //ESPECIFICANDO O Q EU QUERO SE OUVER DUPLOCLICK E MEU ELEMENTO CLICADO TIVER A CLASS COMPLETED ENTAO
-    if(event.target.classList.contains('completed')){
+    if (event.target.classList.contains('completed')) {
       //EVENT REMOVE A CLASS SE  NO ELEMENTO CLICADO (target) TIVER E
       event.target.classList.remove('completed');
-  }else{
-    // SE NAO TIVER EVENT NO ELEMENTO CLICADO (target) ADICIONA
+    } else {
+      // SE NAO TIVER EVENT NO ELEMENTO CLICADO (target) ADICIONA
       event.target.classList.add('completed');
-  };
-});  
-} 
+    };
+  });
+}
 tarefaConcluida()
 
 //REMOVE TUDA DA LISTA |W3SCHOOL
@@ -74,28 +74,51 @@ buttonLimpar.addEventListener('click', () => {
     //firstChild : retorna o primeiro nó filho. 
     selectOl.removeChild(selectOl.firstChild);
   }
- 
+
 })
 
 //REMOVE SOMENTE TAREFAS FEITA
 buttonApagaFeito.addEventListener('click', () => {
- //PERCORRENDO  AS CLASS COMPLETED| COMEÇANDO PELO FIM DO ARRAY PARA IVITAR ERROS JA QUE ESTAMOS REMOVENDO ELEMENTOS -->https://cursos.alura.com.br/forum/topico-excluir-todos-os-elementos-com-uma-classe-159597#:~:text=O%20comando%20document.,desta%20lista%20e%20remov%C3%AA%2Dlos.
-  for(let index = ClassCompleted.length -1; index  >= 0 ; index -= 1)
-  {
+  //PERCORRENDO  AS CLASS COMPLETED| COMEÇANDO PELO FIM DO ARRAY PARA IVITAR ERROS JA QUE ESTAMOS REMOVENDO ELEMENTOS -->https://cursos.alura.com.br/forum/topico-excluir-todos-os-elementos-com-uma-classe-159597#:~:text=O%20comando%20document.,desta%20lista%20e%20remov%C3%AA%2Dlos.
+  for (let index = ClassCompleted.length - 1; index >= 0; index -= 1) {
     //RRMOVE A CADA POSIÇAO DO INDEX
-      ClassCompleted[index].remove()
+    ClassCompleted[index].remove()
   }
-    
+
 });
 
-//SALVANDO 
-ButtonSalva.addEventListener('click', (event) => {
-  for (let index = 0; index < selectli.length; index+= 1) {
-    let positSalve = selectli[index];
-   localStorage.setItem( index, positSalve.innerText);
+
+
+let salvos = JSON.parse(localStorage.getItem("teste")) || [];
+//SALVANDO NO LOCALSTRAGE
+ButtonSalva.addEventListener('click', () => {
+  const selectli = document.getElementsByClassName('list');
+  for (let index = 0; index < selectli.length; index++) {
+    let element = selectli[index].innerText
+   
+    salvos.push(element)
+
+    localStorage.setItem("teste", JSON.stringify(salvos))
   }
 
-     
+
 }
 )
 
+//EXIBINDO ITENS SALVOS NO LOCALSTRAGE
+function perarOsSalvos() {
+  if (salvos.length > 0) {
+
+    for (let index = 0; index < salvos.length; index++) {
+      let exibir = salvos[index];
+      let criaLi = document.createElement('li');
+      criaLi.innerText = exibir;
+      selectOl.appendChild(criaLi);
+
+    }
+
+  }
+
+}
+
+perarOsSalvos()
