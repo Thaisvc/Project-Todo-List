@@ -3,7 +3,10 @@ const selectInput = document.getElementById('texto-tarefa');
 const selectOl = document.getElementById('lista-tarefas');
 const selectButton = document.getElementById('criar-tarefa');
 const buttonLimpar = document.getElementById('apaga-tudo');
-const lis = document.getElementsByClassName('list')
+const buttonApagaFeito = document.getElementById('remover-finalizados');
+const ClassCompleted = document.getElementsByClassName('completed')
+
+
 //======================================================================================================================
 
 // adicionar tarefa a lista
@@ -62,12 +65,24 @@ function tarefaConcluida() {
 } 
 tarefaConcluida()
 
+//REMOVE TUDA DA LISTA |W3SCHOOL
 buttonLimpar.addEventListener('click', () => {
-  const list = document.getElementById('lista-tarefas');
   //O hasChildNodes()método da Nodeinterface retorna um valor booleano indicando se o dado Nodepossui nós filhos ou não.
-  while (list.hasChildNodes()) {
+  while (selectOl.hasChildNodes()) {
     //firstChild : retorna o primeiro nó filho. 
-    list.removeChild(list.firstChild);
+    selectOl.removeChild(selectOl.firstChild);
   }
  
 })
+
+//REMOVE SOMENTE TAREFAS FEITA
+buttonApagaFeito.addEventListener('click', () => {
+ //PERCORRENDO  AS CLASS COMPLETED| COMEÇANDO PELO FIM DO ARRAY PARA IVITAR ERROS JA QUE ESTAMOS REMOVENDO ELEMENTOS -->https://cursos.alura.com.br/forum/topico-excluir-todos-os-elementos-com-uma-classe-159597#:~:text=O%20comando%20document.,desta%20lista%20e%20remov%C3%AA%2Dlos.
+  for(let index = ClassCompleted.length -1; index  >= 0 ; index -= 1)
+  {
+    //RRMOVE A CADA POSIÇAO DO INDEX
+      ClassCompleted[index].remove()
+  }
+    
+});
+
