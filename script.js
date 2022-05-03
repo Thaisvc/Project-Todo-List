@@ -96,14 +96,17 @@ ButtonSalva.addEventListener('click', function() {
   })
 
 //EXIBINDO ITENS SALVOS NO LOCALSTRAGE
+//variavel q pega os item salvos no localstorage
 let salve = localStorage.getItem('salve');
+//se tiver item salvo
   if(salve) {
+    //minha ol recebe os item salvo
       document.getElementById('lista-tarefas').innerHTML = salve
   }
 
   
 
-  
+
 
 //=========================================REQUISITO 12 OUTRA FORMA=============================================
 /* let salvos = JSON.parse(localStorage.getItem("teste")) || [];
