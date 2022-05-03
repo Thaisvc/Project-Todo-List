@@ -86,10 +86,28 @@ buttonApagaFeito.addEventListener('click', () => {
   }
 
 });
+//SALVANDO NO LOCALSTRAGE
+//pegando minha ol 
+let lista = document.getElementById('lista-tarefas');
+//adicionando evento
+ButtonSalva.addEventListener('click', function() {
+  //salvando minha ol com as  li's 
+    localStorage.setItem('salve',lista.innerHTML)
+  })
 
 
 
-let salvos = JSON.parse(localStorage.getItem("teste")) || [];
+
+//EXIBINDO ITENS SALVOS NO LOCALSTRAGE
+let salve = localStorage.getItem('salve');
+  if(salve) {
+      document.getElementById('lista-tarefas').innerHTML = salve
+  }
+
+
+
+//=========================================REQUISITO 12 OUTRA FORMA=============================================
+/* let salvos = JSON.parse(localStorage.getItem("teste")) || [];
 //SALVANDO NO LOCALSTRAGE
 ButtonSalva.addEventListener('click', () => {
   const selectli = document.getElementsByClassName('list');
@@ -121,4 +139,6 @@ function perarOsSalvos() {
 
 }
 
-perarOsSalvos()
+perarOsSalvos() */
+
+
