@@ -95,16 +95,15 @@ ButtonSalva.addEventListener('click', function() {
     localStorage.setItem('salve',lista.innerHTML)
   })
 
-
-
-
 //EXIBINDO ITENS SALVOS NO LOCALSTRAGE
 let salve = localStorage.getItem('salve');
   if(salve) {
       document.getElementById('lista-tarefas').innerHTML = salve
   }
 
+  
 
+  
 
 //=========================================REQUISITO 12 OUTRA FORMA=============================================
 /* let salvos = JSON.parse(localStorage.getItem("teste")) || [];
